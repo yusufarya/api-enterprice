@@ -1,0 +1,33 @@
+version: "3"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8000:9000"
+        volumes:
+            - .:/var/www/html
+        networks:
+            - laravel-net
+        depends_on:
+            - mysql
+
+    mysql:
+        image: mysql:8.0
+        environment:
+            MYSQL_DATABASE: market
+            MYSQL_USER: apimarket
+            MYSQL_PASSWORD: Password01
+            MYSQL_ROOT_PASSWORD: Password01
+        networks:
+            - laravel-net
+        volumes:
+            - mysql-data:/var/lib/mysql
+
+networks:
+    laravel-net:
+        driver: bridge
+
+volumes:
+    mysql-data:
