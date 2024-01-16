@@ -24,7 +24,7 @@ class UserController extends Controller
         if(User::where('username', $data['username'])->count() == 1) {
             // ada data di database 
             throw new HttpResponseException(response([
-                'message' => 'failed',
+                'status' => 'failed',
                 'error' => 'Username already registered'
             ], 400));
         }
@@ -32,7 +32,7 @@ class UserController extends Controller
         if(User::where('email', $data['email'])->count() == 1) {
             // ada data di database 
             throw new HttpResponseException(response([
-                'message' => 'failed',
+                'status' => 'failed',
                 'error' => 'Email already registered'
             ], 400));
         }
