@@ -25,9 +25,8 @@ class UserRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'name' => ['required', 'max:50'],
-            'username' => ['required', 'max:20'],
+            'name' => ['required', 'max:100'],
+            'username' => ['required', 'max:30'],
             'phone' => ['required', 'numeric'],
             'gender' => ['required'],
             'role_id' => ['required'],
@@ -39,7 +38,7 @@ class UserRegisterRequest extends FormRequest
 
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response([
-            'message' => 'failed',
+            'status' => 'failed',
             'error' => $validator->getMessageBag()
         ], 400));
     }
