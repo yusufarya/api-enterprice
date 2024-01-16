@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id_product');
             $table->string('name', 100);
             $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->on('product_categories')->references('id_category');
+            $table->foreign('category_id')->on('categories')->references('id_category');
             $table->unsignedInteger('brand_id');
             $table->foreign('brand_id')->on('brands')->references('id_brand');
             $table->unsignedInteger('unit_id');
